@@ -10,8 +10,12 @@ mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true}, (er
 
 
 const db = mongoose.connection;
+//open a connection to the database 
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
+//here 
+
+//open another connection to the database 
 db.once('open', function(){
     //your tutorial and new code go here. 
     console.log("We're connected");
@@ -48,3 +52,5 @@ db.once('open', function(){
 
     
 });
+
+//or here, we're still connected to the database so we can make changes
