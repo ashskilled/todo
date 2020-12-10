@@ -3,6 +3,7 @@ var List = require('./models/ToDo.js');
 var Item = require('./models/ToDoItem.js'); 
 //Load in the express module
 const express = require('express');  
+const path = require('path');
 
 //creates a new express application 
 const app = express(); 
@@ -18,6 +19,17 @@ const db = mongoose.connection;
 //open a connection to the database 
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
+//use just says, use the following middleware: 
+app.use(
+    //express.static: is middleware for delivering static files
+    //like html, css, javascript, images, etc. 
+    express.static(
+        //basically this just takes care of relative paths 
+        path.join(__dirname, 'public')
+        )
+    );
+
+
 //opening up our server to listen on a specific ip address and port 
 //ip addresses are also known as hostnames 
 app.listen(port, function(){
@@ -29,7 +41,7 @@ app.listen(port, function(){
 Retrieve Specific Item in List
 */ 
 
-app.get('/', function(request, response){
+app.get('/items', function(request, response){
     /*get data*/ 
     Item.find(function(err, items){
             if (err) return console.error(err);
