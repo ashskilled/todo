@@ -1,11 +1,22 @@
 <!doctype html>
 <html>
 <head>
-<title>Ashish's To Do List</title>
-<!-- css files -->
+<title>To Do List</title>
 </head>
 <body>
 <button onclick="clickButton()">Click me for items</button>
+<div id="list"> 
+</div>
+
+<input type="text" placeholder="item name" id="itemName"></input>
+<input type="text" placeholder="assignee" id="assignee"></input>
+<select name="priorities" id="itemPriority">
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+</select>
+<button id="addItem">Add Item</button>
+
 <!--load javascript files into it-->
 <script src="todo.js"></script> 
 </body>
